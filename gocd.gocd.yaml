@@ -1,0 +1,30 @@
+format_version: 10
+pipelines:
+  gocd:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-6e9d0eb:
+        git: https://github.com/bilalahmed55/gocd
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+    - build:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          test:
+            timeout: 0
+            resources:
+              - Syeds-MacBook-Pro.local
+            tasks:
+            - exec:
+                command: pwd
+                run_if: passed
