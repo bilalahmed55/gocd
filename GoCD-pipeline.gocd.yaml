@@ -22,6 +22,8 @@ pipelines:
         jobs:
           test:
             timeout: 0
+            resource:
+              - Syeds-MacBook-Pro.local
             tasks:
             - exec:
                 arguments:
